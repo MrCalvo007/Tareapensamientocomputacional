@@ -1,0 +1,23 @@
+n=int(input("ingrese un número: "))
+c=n//100
+residuo1=n%100
+d=residuo1//10
+u=residuo1%10
+aux=0
+if (n>=100)and(n<=999):
+    print ("es de 3 digitos")
+elif (n<=100)or(n>=999):
+    print ("no es de 3 digitos")
+if (c>d):
+    aux=c
+    c=d
+    d=aux
+if(d>u):
+    aux=d
+    d=u
+    u=aux
+else:
+    print("número invalido")
+    
+print("Ascendente", c,d,u)
+print("Descendente",u, d, c)
