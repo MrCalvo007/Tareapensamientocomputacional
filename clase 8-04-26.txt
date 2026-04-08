@@ -1,0 +1,37 @@
+#"fruta"==("fresa","mango", "manzana")
+#numeros=[1,2,3,4,5,6,7,8]
+#"mixto"==("fresa",1,2,"manzana")
+
+#fruta(0)=="Pera"
+#fruta(1)=="Mandarina"
+#nuevo=input("Ingrese nuevo nombre")
+#fruta(2)==nuevo
+
+#print(fruta)
+
+#fruta.append("Banano")
+#print(fruta)
+#fruta.pop()
+#print(fruta)
+
+#furta.pop(1)
+#print(fruta)
+
+ #numeros==("45","25","-6","8","9","-6")
+#for i in numeros:
+   # if i%2==0:
+    #    contador==contador+1
+   # print(contador)
+    
+#impares=[]
+#pares=[]
+    
+#for i in numeros:
+       # if i%2!=0:
+            #impares.append(i)
+       # print(impares)
+
+#for i in numeros:
+    #if i%2==0:
+       # pares.append(i)
+      #  print (pares)
