@@ -1,0 +1,123 @@
+# MINIPROYECTO - CONTROL DE SALUD SEMANAL
+
+# Días de la semana
+dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"]
+
+# Datos simulados
+niveles_azucar = [130, 160, 95, 175, 160]      # mg/dL
+niveles_sal = [2000, 2400, 1800, 2400, 2700]   # mg
+
+# Presión arterial sistólica y diastólica
+presion_sistolica = [115, 130, 110, 125, 175]
+presion_diastolica = [75, 85, 70, 78, 95]
+
+# ==========================================
+# FUNCIONES
+# ==========================================
+
+def evaluar_azucar(valor):
+    if 70 <= valor <= 140:
+        return "Normal"
+    else:
+        return "ALERTA: Fuera del rango saludable"
+
+def evaluar_sal(valor):
+    if valor <= 2300:
+        return "Consumo adecuado"
+    else:
+        return "ALERTA: Exceso de sal"
+
+def clasificar_presion(sistolica, diastolica):
+
+    if sistolica < 120 and diastolica < 80:
+        return "Normal"
+
+    elif 120 <= sistolica <= 129 and diastolica < 80:
+        return "Elevada"
+
+    elif (130 <= sistolica <= 139) or (80 <= diastolica <= 89):
+        return "Hipertensión Etapa 1"
+
+    elif sistolica >= 140 or diastolica >= 90:
+        return "Hipertensión Etapa 2"
+
+    else:
+        return "No clasificada"
+
+# ==========================================
+# REPORTE DIARIO
+# ==========================================
+
+print("====================================")
+print("   REPORTE DE SALUD SEMANAL")
+print("====================================\n")
+
+for i in range(len(dias)):
+
+    print(f"Día: {dias[i]}")
+    print("--------------------------------")
+
+    # Datos del día
+    azucar = niveles_azucar[i]
+    sal = niveles_sal[i]
+    sistolica = presion_sistolica[i]
+    diastolica = presion_diastolica[i]
+
+    # Evaluaciones
+    resultado_azucar = evaluar_azucar(azucar)
+    resultado_sal = evaluar_sal(sal)
+    resultado_presion = clasificar_presion(sistolica, diastolica)
+
+    # Mostrar resultados
+    print(f"Azúcar: {azucar} mg/dL -> {resultado_azucar}")
+    print(f"Sal: {sal} mg -> {resultado_sal}")
+    print(f"Presión: {sistolica}/{diastolica} mmHg -> {resultado_presion}")
+
+    # Alertas adicionales
+    if resultado_presion != "Normal":
+        print("ALERTA: Revisar presión arterial")
+
+    print("\n")
+
+# ==========================================
+# PROMEDIOS SEMANALES
+# ==========================================
+
+promedio_azucar = sum(niveles_azucar) / len(niveles_azucar)
+promedio_sal = sum(niveles_sal) / len(niveles_sal)
+promedio_sistolica = sum(presion_sistolica) / len(presion_sistolica)
+promedio_diastolica = sum(presion_diastolica) / len(presion_diastolica)
+
+print("====================================")
+print("      PROMEDIOS SEMANALES")
+print("====================================")
+
+print(f"Promedio azúcar: {promedio_azucar:.2f} mg/dL")
+print(f"Promedio sal: {promedio_sal:.2f} mg")
+print(f"Promedio presión arterial: "
+      f"{promedio_sistolica:.2f}/{promedio_diastolica:.2f} mmHg")
+
+# ==========================================
+# EVALUACIÓN FINAL
+# ==========================================
+
+print("\n====================================")
+print("       EVALUACIÓN GENERAL")
+print("====================================")
+
+if promedio_azucar > 140:
+    print("ALERTA: Promedio de azúcar elevado")
+else:
+    print("Azúcar semanal dentro del rango normal")
+
+if promedio_sal > 2300:
+    print("ALERTA: Consumo semanal de sal elevado")
+else:
+    print("Consumo de sal adecuado")
+
+clasificacion_final = clasificar_presion(
+    promedio_sistolica, 
+    promedio_diastolica
+    )
+
+print(f"Clasificación promedio de presión arterial: {clasificacion_final}")
